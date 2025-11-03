@@ -1,7 +1,7 @@
 
 
 module.exports = {
-	'url': 'mongodb+srv://thaotbja:Thaokentbja20@cluster0.3kowkq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+	'url': 'mongodb+srv://thaotbja:Thaokentbja20@cluster0.3kowxkq.mongodb.net/?appName=Cluster0',
 	'options': {
 	//	'user':   'root',
 	//	'pass':   '',
