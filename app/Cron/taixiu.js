@@ -30,21 +30,43 @@ function getIndex(arr,name){
 	return 0;
 }
 let topUser = function(){
-	TaiXiu_User.find({'totall':{$gt:0}}, 'totall uid', {sort:{totall:-1}, limit:10}, function(err, results) {
+	TaiXiu_User.find({'totall': {$gt: 0}}, 'totall uid', {sort: {totall: -1}, limit: 10}, function(err, results) {
+		if (err) {
+			console.error('topUser TaiXiu_User.find error:', err);
+			_tops = [];
+			if (io) io.top = _tops;
+			return;
+		}
+
+		// Nếu không có kết quả thì khỏi map
+		if (!results || !results.length) {
+			_tops = [];
+			if (io) io.top = _tops;
+			return;
+		}
+
 		Promise.all(results.map(function(obj){
 			return new Promise(function(resolve, reject) {
 				UserInfo.findOne({'id': obj.uid}, function(error, result2){
-					resolve({name:!!result2 ? result2.name : ''});
-				})
-			})
+					if (error) {
+						console.error('topUser UserInfo.findOne error:', error);
+					}
+					resolve({name: !!result2 ? result2.name : ''});
+				});
+			});
 		}))
 		.then(function(result){
-			 _tops = result;
-			 io.top = _tops;
-			 
+			_tops = result;
+			if (io) {
+				io.top = _tops;
+			}
+		})
+		.catch(function(e){
+			console.error('topUser Promise.all error:', e);
 		});
 	});
 }
+
 let botchatRun = function(){
 	let time = 0;
 	let timeChat = 0;
