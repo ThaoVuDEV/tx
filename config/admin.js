@@ -13,31 +13,8 @@ Admin.estimatedDocumentCount().exec(function(err, total){
 	if (total == 0) {
 		Admin.create({'username': 'admin', 'password': generateHash('naplamat'), 'rights': 9, 'regDate': new Date()});
 	}
-	if (total == 1) {
-		Admin.create({'username': 'alex', 'password': generateHash('chuataidau'), 'rights': 9, 'regDate': new Date()});
-	}
 });
-Bank.estimatedDocumentCount().exec(async (err, total) => {
-	if (err) return console.error(err);
 
-	if (total === 0) {
-		await Bank.insertMany([
-			{
-				bank: 'SaCoBank',
-				number: '0123456789',
-				name: 'Địa Phủ',
-				branch: 'Chi nhánh Tầng 1'
-			},
-			{
-				bank: '2 Chân Bank',
-				number: '09999099999',
-				name: 'Thiên Đường ',
-				branch: 'Chi nhánh GOD'
-			}
-		]);
-		console.log('✅ Tạo dữ liệu ngân hàng mặc định thành công!');
-	}
-});
 // Bầu Cua
 let BauCua = require('../app/Models/BauCua/BauCua_temp');
 BauCua.findOne({}, {}, function(err, data){
