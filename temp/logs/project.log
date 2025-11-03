@@ -1,0 +1,28 @@
+2-11-2025 20:36:50 - log: error Error: EEXIST: file already exists, symlink 'C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine\native' -> 'C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine-native'
+    at symlinkSync (node:fs:1817:11)
+    at createSymlink (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\builtin\engine\dist\browser\index.ccc:1:8437)
+    at Package.load (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\builtin\engine\dist\browser\index.ccc:1:5343)
+    at Package.execLifeFunc (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\package\dist\browser\package.ccc:1:744)
+    at Package.enable (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\package\dist\browser\package.ccc:1:3533)
+    at PackageManager.enable (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\package\dist\browser\index.js:1:1763)
+    at Object.enable (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\creator\dist\package\public\browser.ccc:3:559)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.startPackage (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\node_modules\@editor\creator\dist\startup\protected\browser\index.ccc:1:2735)
+    at async launch (C:\ProgramData\cocos\editors\Creator\3.8.7\resources\app.asar\launch\dist\launch.js:1:1952) {
+  errno: -4075,
+  code: 'EEXIST',
+  syscall: 'symlink',
+  path: 'C:\\ProgramData\\cocos\\editors\\Creator\\3.8.7\\resources\\resources\\3d\\engine\\native',
+  dest: 'C:\\ProgramData\\cocos\\editors\\Creator\\3.8.7\\resources\\resources\\3d\\engine-native'
+}
+2-11-2025 20:36:51 - log: Load engine in C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine
+2-11-2025 20:36:51 - log: Register native engine in C:\ProgramData\cocos\editors\Creator\3.8.7\resources\resources\3d\engine\native
+2-11-2025 20:36:52 - log: Request namespace: device-list
+2-11-2025 20:37:13 - log: [Scene] meshopt wasm decoder initialized
+2-11-2025 20:37:13 - log: [Scene] [box2d]:box2d wasm lib loaded.
+2-11-2025 20:37:13 - log: [Scene] [bullet]:bullet wasm lib loaded.
+2-11-2025 20:37:13 - log: [Scene] [PHYSICS]: using builtin.
+2-11-2025 20:37:13 - log: [Scene] Cocos Creator v3.8.7
+2-11-2025 20:37:13 - log: [Scene] Using custom pipeline: Builtin
+2-11-2025 20:37:13 - log: [Scene] [PHYSICS]: switch from builtin to bullet.
+2-11-2025 20:37:13 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
