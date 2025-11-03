@@ -26,8 +26,19 @@ let mongoose = require('mongoose');
 require('mongoose-long')(mongoose); // INT 64bit
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex',   true);
-mongoose.connect(configDB.url, configDB.options); // kết nối tới database
-// cấu hình tài khoản admin mặc định và các dữ liệu mặc định
+mongoose.connect(configDB.url, configDB.options)
+    .then(() => {
+        console.log(`✅ MongoDB connected successfully to: ${configDB.url}`);
+    })
+    .catch((err) => {
+        console.error('❌ MongoDB connection error:', err.message);
+    });
+
+// Theo dõi sự kiện (phòng trường hợp mất kết nối giữa chừng)
+const db = mongoose.connection;
+db.on('error', (err) => console.error('MongoDB error:', err));
+db.once('open', () => console.log('✅ MongoDB connection opened'));
+db.on('disconnected', () => console.warn('⚠️ MongoDB disconnected'));
 require('./config/admin');
 // đọc dữ liệu from
 app.use(bodyParser.json());
