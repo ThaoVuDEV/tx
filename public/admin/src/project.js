@@ -297,7 +297,7 @@ window.__require = (function t(e, i, n) {
             },
             _onSocketError: function (t) {},
             reconnect: function () {
-              this.connect('127.0.0.1', '/redtcp', !1, !0);
+              this.connect('https://alexvudev.info', '/redtcp', !1, !0);
             },
             init: function () {
               this.initPrototype();
@@ -1645,7 +1645,7 @@ window.__require = (function t(e, i, n) {
             cc.RedT.signOut();
           },
           reconnect: function () {
-            this.connect('127.0.0.1', '/redtcp', !1, !0);
+            this.connect('alexvudev.info', '/redtcp', !1, !0);
           },
           auth: function (t) {
             var e = this;

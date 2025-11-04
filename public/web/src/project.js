@@ -1437,7 +1437,7 @@ window.__require = (function t(e, i, n) {
             },
             _onSocketError: function (t) {},
             reconnect: function () {
-              this.connect('127.0.0.1', '/client');
+               this.connect('alexvudev.info', '/client');
             },
             init: function () {
               cc.view.setResizeCallback(function () {
