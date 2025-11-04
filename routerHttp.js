@@ -7,7 +7,7 @@ module.exports = function (app, redT) {
     if (mobile({ ua: req })) {
       return res.redirect('/mobile');
     } else {
-      return res.redirect('web');
+      return res.redirect('/web/');
     }
   });
   app.get('/playgame/', function (req, res) {
