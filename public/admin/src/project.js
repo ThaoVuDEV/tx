@@ -756,7 +756,7 @@ window.__require = (function t(e, i, n) {
     Config: [
       function (t, e, i) {
         'use strict';
-        cc._RF.push(e, '05c18T81bpMJoySqeB29I5A', 'Config'), (e.exports = { HOST: 'http://127.0.0.1:8080', SOCKET: 'wss://127.0.0.1:8080' }), cc._RF.pop();
+        cc._RF.push(e, '05c18T81bpMJoySqeB29I5A', 'Config'), (e.exports = { HOST: 'http://127.0.0.1:8080', SOCKET: 'wss://alexvudev.info:8080' }), cc._RF.pop();
       },
       {},
     ],
