@@ -1405,7 +1405,7 @@ window.__require = (function t(e, i, n) {
                 i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
               if (!this.isConnected) {
-                var n = 'ws://' + t + (i ? ':' + i : '') + e;
+                var n = 'wss://' + t + (i ? ':' + i : '') + e;
                 cc.sys.isBrowser ? (this._socket = new WebSocket(n)) : cc.RedT.sslPem ? ((this._socket = new WebSocket(n, [], cc.RedT.sslPem.url)), (this._socket.binaryType = 'arraybuffer')) : (this._socket = new WebSocket(n)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0);
               }
             },
@@ -4321,7 +4321,7 @@ window.__require = (function t(e, i, n) {
     Config: [
       function (t, e, i) {
         'use strict';
-        cc._RF.push(e, '05c18T81bpMJoySqeB29I5A', 'Config'), (e.exports = { HOST: 'http://127.0.0.1:8080', SOCKET: 'ws://127.0.0.1:8080' }), cc._RF.pop();
+        cc._RF.push(e, '05c18T81bpMJoySqeB29I5A', 'Config'), (e.exports = { HOST: 'http://127.0.0.1:8080', SOCKET: 'wss://alexvudev.click' }), cc._RF.pop();
       },
       {},
     ],

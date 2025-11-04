@@ -267,7 +267,7 @@ window.__require = (function t(e, i, n) {
               var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : '/',
                 i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
-              this.isConnected || ((this._socket = new WebSocket('ws://' + t + (i ? ':' + i : '') + e)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0));
+              this.isConnected || ((this._socket = new WebSocket('wss://' + t + (i ? ':' + i : '') + e)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0));
             },
             disconnect: function () {
               (this.isConnected = !1), this._socket.close();
@@ -1617,7 +1617,7 @@ window.__require = (function t(e, i, n) {
             var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : '/',
               i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
             arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
-            this.isConnected || ((this._socket = new WebSocket('ws://' + t + (i ? ':' + i : '') + e)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0));
+            this.isConnected || ((this._socket = new WebSocket('wss://' + t + (i ? ':' + i : '') + e)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0));
           },
           disconnect: function () {
             (this.isConnected = !1), this._socket.close();
