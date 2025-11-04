@@ -10,13 +10,6 @@ module.exports = function (app, redT) {
       return res.redirect('/web');
     }
   });
-  app.get('/web', function (req, res) {
-    if (mobile({ ua: req })) {
-      return res.redirect('/mobile/');
-    } else {
-      return res.render('/web/');
-    }
-  });
   app.get('/playgame/', function (req, res) {
     if (mobile({ ua: req })) {
       return res.redirect('/mobile/');
