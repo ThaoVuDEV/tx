@@ -1406,6 +1406,7 @@ window.__require = (function t(e, i, n) {
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
               if (!this.isConnected) {
                 var n = 'ws://' + t + (i ? ':' + i : '') + e;
+                 console.log('WS CONNECT:', { t, e, i, n }); 
                 cc.sys.isBrowser ? (this._socket = new WebSocket(n)) : cc.RedT.sslPem ? ((this._socket = new WebSocket(n, [], cc.RedT.sslPem.url)), (this._socket.binaryType = 'arraybuffer')) : (this._socket = new WebSocket(n)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0);
               }
             },
