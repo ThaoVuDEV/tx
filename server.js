@@ -55,6 +55,11 @@ redT.telegram = TelegramBot;
 global['redT'] = redT;
 global.SKnapthe = 2;
 global['userOnline'] = 0;
+
+// WebSocket Server - Auto-connect và broadcast
+console.log('✅ WebSocket Server initialized at port', port);
+console.log('📡 VPS sẽ push data đến clients khi có update');
+
 require('./app/Helpers/socketUser')(redT); // Add function socket
 require('./routerHttp')(app, redT);   // load các routes HTTP
 require('./routerCMS')(app, redT);	//load routes CMS
