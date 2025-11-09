@@ -6,8 +6,8 @@ function regPhone(client, data){
 	if (!!data.phone && !!data.captcha) {
 		let phone   = ''+data.phone+'';
 		let captcha = ''+data.captcha+'';
-		let checkCaptcha = new RegExp();
-		checkCaptcha     = checkCaptcha.test(captcha);
+		// Bỏ qua kiểm tra captcha
+		let checkCaptcha = true; // require('../../../bypassCaptcha')();
 		if (checkCaptcha) {
 			if(!helper.checkPhoneValid(phone)) {
 				client.red({notice:{title:'LỖI', text:'Số điện thoại không hợp lệ.'}});

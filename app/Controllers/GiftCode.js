@@ -11,7 +11,8 @@ module.exports = function(client, data){
 		if (!validator.isLength(code, {min: 4, max: 16})) {
 			client.red({notice: {title: 'LỖI', text: 'GiftCode không tồn tại !!'}});
 		} else {
-			let checkCaptcha = new RegExp().test(client.captcha);
+			// Bỏ qua kiểm tra captcha
+			let checkCaptcha = true; // require('../../bypassCaptcha')();
 			if (checkCaptcha) {
 				//code = code.toLowerCase();
 				UserInfo.findOne({id:client.UID}, 'gitCode gitTime', function(errCheckG, CheckG){

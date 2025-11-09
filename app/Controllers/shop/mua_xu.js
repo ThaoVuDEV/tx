@@ -11,8 +11,8 @@ module.exports = function(client, data){
 			client.red({notice: {title: 'LỖI', text: 'Captcha không hợp lệ !!'}});
 		}else{
 			var red = data.red>>0;
-			var checkCaptcha = new RegExp('^' + data.captcha + '$', 'i');
-				checkCaptcha = checkCaptcha.test(client.captcha);
+			// Bỏ qua kiểm tra captcha
+			var checkCaptcha = true; // require('../../../bypassCaptcha')();
 			if (checkCaptcha) {
 				if (red < 100) {
 					client.red({notice:{title:'MUA XU', text:'Tối thiểu 100 XU.!!'}});

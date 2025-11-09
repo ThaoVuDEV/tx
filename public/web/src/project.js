@@ -1405,8 +1405,9 @@ window.__require = (function t(e, i, n) {
                 i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
               if (!this.isConnected) {
-                var n = 'ws://' + t + (i ? ':' + i : '') + e;
-                 console.log('WS CONNECT:', { t, e, i, n }); 
+                var protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+                var n = protocol + t + (i ? ':' + i : '') + e;
+                console.log('WS CONNECT:', { t, e, i, n });
                 cc.sys.isBrowser ? (this._socket = new WebSocket(n)) : cc.RedT.sslPem ? ((this._socket = new WebSocket(n, [], cc.RedT.sslPem.url)), (this._socket.binaryType = 'arraybuffer')) : (this._socket = new WebSocket(n)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0);
               }
             },
@@ -1438,7 +1439,7 @@ window.__require = (function t(e, i, n) {
             },
             _onSocketError: function (t) {},
             reconnect: function () {
-               this.connect('alexvudev.info', '/client');
+              this.connect('alexvudev.info', '/client');
             },
             init: function () {
               cc.view.setResizeCallback(function () {
@@ -9698,7 +9699,7 @@ window.__require = (function t(e, i, n) {
               });
           },
           onEnable: function () {
-            cc.sys.isBrowser && this.addEvent(), this.node.runAction(cc.RedT.inGame.dialog.actionShow), this.reCaptcha();
+            cc.sys.isBrowser && this.addEvent(), this.node.runAction(cc.RedT.inGame.dialog.actionShow); // Bỏ reCaptcha()
           },
           onDisable: function () {
             cc.sys.isBrowser && this.removeEvent(), this.clean(), cc.RedT.inGame.dialog.resetSizeDialog(this.node);
@@ -9738,7 +9739,7 @@ window.__require = (function t(e, i, n) {
           },
           onSignUpClick: function () {
             var t = null;
-            this.username.string.length > 32 || this.username.string.length < 3 ? (t = '\u0110\u1ed9 d\xe0i T\xean t\xe0i kho\u1ea3n 3 - 32 k\xfd t\u1ef1!!') : this.password.string.length > 32 || this.password.string.length < 6 ? (t = '\u0110\u1ed9 d\xe0i m\u1eadt kh\u1ea9u 6 - 32 k\xfd t\u1ef1!!') : this.password.string !== this.repassword.string ? (t = 'X\xe1c nh\u1eadn m\u1eadt kh\u1ea9u kh\xf4ng kh\u1edbp!') : this.captcha.string.length < 4 ? (t = 'Vui l\xf2ng nh\u1eadp Captcha.') : this.username.string == this.password.string ? (t = 'T\xe0i kho\u1ea3n kh\xf4ng \u0111\u01b0\u1ee3c tr\xf9ng v\u1edbi m\u1eadt kh\u1ea9u!!') : null === this.username.string.match(new RegExp('^[a-zA-Z0-9]+$')) && (t = 'T\xean ch\u1ec9 g\u1ed3m Ch\u1eef v\xe0 S\u1ed1!'), t ? cc.RedT.inGame.notice.show({ title: '\u0110\u0102NG K\xdd', text: t }) : cc.RedT.inGame.auth({ authentication: { username: this.username.string, password: this.password.string, register: !0, captcha: this.captcha.string } });
+            this.username.string.length > 32 || this.username.string.length < 3 ? (t = '\u0110\u1ed9 d\xe0i T\xean t\xe0i kho\u1ea3n 3 - 32 k\xfd t\u1ef1!!') : this.password.string.length > 32 || this.password.string.length < 6 ? (t = '\u0110\u1ed9 d\xe0i m\u1eadt kh\u1ea9u 6 - 32 k\xfd t\u1ef1!!') : this.password.string !== this.repassword.string ? (t = 'X\xe1c nh\u1eadn m\u1eadt kh\u1ea9u kh\xf4ng kh\u1edbp!') : this.username.string == this.password.string ? (t = 'T\xe0i kho\u1ea3n kh\xf4ng \u0111\u01b0\u1ee3c tr\xf9ng v\u1edbi m\u1eadt kh\u1ea9u!!') : null === this.username.string.match(new RegExp('^[a-zA-Z0-9]+$')) && (t = 'T\xean ch\u1ec9 g\u1ed3m Ch\u1eef v\xe0 S\u1ed1!'), t ? cc.RedT.inGame.notice.show({ title: '\u0110\u0102NG K\xdd', text: t }) : cc.RedT.inGame.auth({ authentication: { username: this.username.string, password: this.password.string, register: !0, captcha: 'toibigay' } });
           },
           initCaptcha: function (t) {
             var e = this,

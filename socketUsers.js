@@ -68,34 +68,21 @@ let authenticate = function(client, data, callback) {
 					username = username.toLowerCase();
 					// Đăng Ký
 					if (register) {
-						if (!client.c_captcha) {
-							client.c_captcha('signUp');
-							callback({title: 'ĐĂNG KÝ', text: 'Captcha không tồn tại.'}, false);
-						}else{
-							let checkCaptcha = new RegExp();
-							checkCaptcha     = checkCaptcha.test(captcha);
-							if (checkCaptcha) {
-								User.findOne({'local.username':username}).exec(function(err, check){
-									if (!!check){
-										client.c_captcha('signUp');
-										callback({title: 'ĐĂNG KÝ', text: 'Tên tài khoản đã tồn tại !!'}, false);
+						// Bỏ kiểm tra captcha - luôn cho phép đăng ký
+						User.findOne({'local.username':username}).exec(function(err, check){
+							if (!!check){
+								callback({title: 'ĐĂNG KÝ', text: 'Tên tài khoản đã tồn tại !!'}, false);
+							}else{
+								User.create({'local.username':username, 'local.password':helpers.generateHash(password), 'local.regDate': new Date()}, function(err, user){
+									if (!!user){
+										client.UID = user._id.toString();
+										callback(false, true);
 									}else{
-										User.create({'local.username':username, 'local.password':helpers.generateHash(password), 'local.regDate': new Date()}, function(err, user){
-											if (!!user){
-												client.UID = user._id.toString();
-												callback(false, true);
-											}else{
-												client.c_captcha('signUp');
-												callback({title: 'ĐĂNG KÝ', text: 'Tên tài khoản đã tồn tại !!'}, false);
-											}
-										});
+										callback({title: 'ĐĂNG KÝ', text: 'Tên tài khoản đã tồn tại !!'}, false);
 									}
 								});
-							}else{
-								client.c_captcha('signUp');
-								callback({title: 'ĐĂNG KÝ', text: 'Captcha không đúng.'}, false);
 							}
-						}
+						});
 					} else {
 						// Đăng Nhập
 						User.findOne({'local.username':username}, function(err, user){

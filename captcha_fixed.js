@@ -1,6 +1,6 @@
+let svgCaptcha = require('svg-captcha');
 
 let Create = function(client, name){
-	console.log('Creating captcha for:', name);
 	// Set fixed captcha text for testing
 	let captchaText = 'toilagay';
 	
@@ -14,9 +14,9 @@ let Create = function(client, name){
 	let data = {};
 	data['data'] = 'data:image/svg+xml;base64,' + Buffer.from(svgData).toString('base64');
 	data['name'] = name;
-	console.log('Sending captcha data for:', name);
 	client.red({captcha: data});
 }
+
 module.exports = function(data){
 	switch(data){
 		case 'signIn':
