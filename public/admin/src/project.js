@@ -268,7 +268,7 @@ window.__require = (function t(e, i, n) {
                 i = arguments.length > 2 ? arguments[2] : null;
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
               if (!this.isConnected) {
-                var protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+                var protocol = 'wss://';  // Always use WSS (HTTPS WebSocket)
                 var port = (i && typeof i === 'number') ? ':' + i : '';
                 var n = protocol + t + port + e;
                 console.log('🔗 WS CONNECT [admin/redtcp]:', { hostname: t, path: e, port: i, url: n });
@@ -1631,7 +1631,7 @@ window.__require = (function t(e, i, n) {
               i = arguments.length > 2 ? arguments[2] : null;
             arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
             if (!this.isConnected) {
-              var protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+              var protocol = 'wss://';  // Always use WSS (HTTPS WebSocket)
               var port = (i && typeof i === 'number') ? ':' + i : '';
               var n = protocol + t + port + e;
               console.log('🔗 WS CONNECT [admin/MainGame]:', { hostname: t, path: e, port: i, url: n });
