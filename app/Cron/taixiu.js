@@ -582,18 +582,18 @@ let playGame = function(){
 					},
 					list: []
 				};
-				topUser();
-				let taixiucf = Helpers.getConfig('taixiu');
-				if (!!taixiucf && taixiucf.bot && !!io.listBot && io.listBot.length > 0) {
-					// lấy danh sách tài khoản bot
-					botTemp = [...io.listBot];
-					botList = [...io.listBot];
-					
-					let maxBot = (botList.length*90/100)>>0;
-					botList = Helpers.shuffle(botList); // tráo
-					botList = botList.slice(0, maxBot);
-					botListChat = botTemp;
-					maxBot = null;
+			topUser();
+			let taixiucf = Helpers.getConfig('taixiu');
+			if (!!taixiucf && taixiucf.bot && !!io.listBot && io.listBot.length > 0) {
+				// lấy danh sách tài khoản bot
+				botTemp = [...io.listBot];
+				botList = [...io.listBot];
+				
+				let maxBot = (botList.length*100/100)>>0;
+				botList = Helpers.shuffle(botList); // tráo
+				botList = botList.slice(0, maxBot);
+				botListChat = botTemp;
+				maxBot = null;
 				}else{
 					botTemp = [];
 					botList = [];

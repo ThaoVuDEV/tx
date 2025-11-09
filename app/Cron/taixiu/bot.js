@@ -33,6 +33,25 @@ let Caoboi_user       = require('../../Models/Caoboi/Caoboi_user');
 let XocXoc_user     = require('../../Models/XocXoc/XocXoc_user');
 let MegaJP_user     = require('../../Models/MegaJP/MegaJP_user');
 let RongHo_user     = require('../../Models/RongHo/RongHo_user');
+
+// Danh sách tên bot
+let botNames = [
+  'anhPhong','hoangTuan','minhDu','thanhLoc','quocVu','longCa','khoiNgau','phatCa','huyKool',
+  'lamChanTinh','namPhien','minhSoai','phongLangTu','hieuRong','duongPhong','tanBadBoy','vuongDe',
+  'kienNgau','hungKiet','namVip',
+
+  'emMiu','cogaixinh','ngocMy','haAnh','linhChi','thaoNhi','myDuyen','trangCute','bongHong','emCam',
+  'lanAnh','ngocThao','emSocola','myNa','thanhHa','beHeo','thaoMlem','anhThu','tiNa','meoCon',
+
+  'tieuPhong','tieuLongNu','duongQua','coBang','trieuMan','hoangDung','voTan','lamTrieu','bachLang',
+  'thienVuong','huyetAnh','phongKiem','docCo','thienSon','huyetNguyet','tamCa','docHanh','tieuDao',
+  'huyenMinh','kiemHanh',
+
+  'anhDeoBiet','emKhongBiet','anhDepTraiQua','gaidep123','coBeBimBim','soaiCaLangThang','emNghiAnhYeuEm',
+  'banKieuLangMan','toiTenLaDat','anhYeuem','banTrumKeo','nguoiLaOi','nguoixauTinhCam','motMinhThoi',
+  'traSuaNgoiBuon','tinhDauNho','demMuaBuon','anhNguoiMay','coBeMuaDong'
+];
+
 /**
  * Ngẫu nhiên cược
  * return {number}
@@ -61,8 +80,8 @@ let random = function(){
 		// 8 9 10 11 12 13 14
 		return (Math.floor(Math.random()*(7-2+1))+2)*100000;
 	}else{
-		// 0 1 2 3 4 5 6 7
-		return (Math.floor(Math.random()*(100-10+1))+10)*10000;
+		// 0 1 2 3 4 5 6 7 (tăng minimum lên 200,000)
+		return (Math.floor(Math.random()*(100-20+1))+20)*10000;
 	}
 };
 
@@ -90,7 +109,9 @@ let tx = function(bot, io){
 };
 let regbot = function(){
 	var username = 'nohu' + helpers.RandomUserName(5) + helpers.RandomUserName(1);
-	var name = 'nohu' + helpers.RandomUserName(1) + helpers.RandomUserName(2) + helpers.RandomUserName(3);
+	var randomIdx = Math.floor(Math.random() * botNames.length);
+	var randomNum = Math.floor(Math.random() * 9000) + 1000;  // 1000-9999
+	var name = botNames[randomIdx] + randomNum;  // Ví dụ: vuacoba1234
 	User.create({'local.username':username, 'local.password':helpers.generateHash(username), 'local.regDate': new Date()}, function(err, user){
 		if (!!user){
 			var bot_uid = user._id.toString();
