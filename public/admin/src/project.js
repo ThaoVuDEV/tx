@@ -265,9 +265,20 @@ window.__require = (function t(e, i, n) {
             _socket: null,
             connect: function (t) {
               var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : '/',
-                i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
+                i = arguments.length > 2 ? arguments[2] : null;
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
-              this.isConnected || ((this._socket = new WebSocket('ws://' + t + (i ? ':' + i : '') + e)), (this._socket.onopen = this._onSocketConnect), (this._socket.onclose = this._onSocketDisconnect), (this._socket.onmessage = this._onSocketData), (this._socket.onerror = this._onSocketError), (this.isConnected = !0));
+              if (!this.isConnected) {
+                var protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+                var port = (i && typeof i === 'number') ? ':' + i : '';
+                var n = protocol + t + port + e;
+                console.log('🔗 WS CONNECT [admin/redtcp]:', { hostname: t, path: e, port: i, url: n });
+                this._socket = new WebSocket(n);
+                this._socket.onopen = this._onSocketConnect;
+                this._socket.onclose = this._onSocketDisconnect;
+                this._socket.onmessage = this._onSocketData;
+                this._socket.onerror = this._onSocketError;
+                this.isConnected = !0;
+              }
             },
             disconnect: function () {
               (this.isConnected = !1), this._socket.close();
@@ -297,7 +308,9 @@ window.__require = (function t(e, i, n) {
             },
             _onSocketError: function (t) {},
             reconnect: function () {
-              this.connect('https://alexvudev.info', '/redtcp', !1, !0);
+              var hostname = window.location.hostname;
+              this.connect(hostname, '/redtcp', null);
+              console.log('🔗 WS RECONNECT [admin/redtcp]:', { protocol: window.location.protocol, hostname: hostname });
             },
             init: function () {
               this.initPrototype();
